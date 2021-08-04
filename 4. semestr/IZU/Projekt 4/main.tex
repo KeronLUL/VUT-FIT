@@ -1,0 +1,218 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[pdftex,scale={.8,.8}]{geometry}
+\usepackage{xcolor}
+
+
+\begin{document}
+\flushleft
+\textbf{Karel Norek, xnorek01 - zadání 299} \newline
+
+\vspace{0.5cm}
+
+Bod 1: [0; -1; 2]
+Bod 2: [-3; -1; -3] 
+Bod 3: [1; -3; 2] 
+Bod 4: [-2; -2; 2] 
+Bod 5: [1; 2; -4] \newline
+Bod 6: [0; -4; 3]
+Bod 7: [1; 0; -3]
+Bod 8: [-3; 0; 0]
+Bod 9: [-2; 2; -4]
+Bod 10: [-2; 4; 3] \newline
+Bod 11: [3; -2; 4]
+Bod 12: [2; -5; -4] \newline
+
+\vspace{0.1cm}
+
+Střed 1: [-3; 4; 1]
+Střed 2: [0; -3; -1]
+Střed 3: [4; -4; 2]
+
+\vspace{0.5cm}
+
+\textbf{Iterace 1:} \newline
+Ukázka výpočtu vzdálenosti bodu 1 a středu 1: \[\sqrt{(0-3)^2 + (-1-4)^2 + (-2-1)^2} \approx 6.557439\]
+\begin{table}[!ht]
+    \renewcommand{\arraystretch}{1.3}
+    \centering
+    \setlength{\tabcolsep}{20pt}
+    \begin{tabular}{|c|c|c|c|}
+    
+    \hline
+        & Střed 1 & Střed 2 & Střed 3 \\ \hline
+        Bod 1 & 6.55744 & \textcolor{blue}{3.60555} & 6.40312 \\ \hline
+        Bod 2 & 6.40312 & \textcolor{blue}{5.38516} & 9.11043 \\ \hline
+        Bod 3 & 8.12404 & \textcolor{blue}{1.41421} & 3.16228\\ \hline
+        Bod 4 & 6.16441 & \textcolor{blue}{2.44949} & 6.32456 \\ \hline
+        Bod 5 & \textcolor{blue}{6.70820} & 7.14143 & 9 \\ \hline
+        Bod 6 & 8.77496 & \textcolor{blue}{2.23607} & 4.12311 \\ \hline
+        Bod 7 & 6.92820 & \textcolor{blue}{5.09902} & 7.07107 \\ \hline
+        Bod 8 & \textcolor{blue}{4.12311} & 4.3589 & 8.30662\\ \hline
+        Bod 9 & \textcolor{blue}{5.47723} & 7.34847 & 10.39231 \\ \hline
+        Bod 10 & \textcolor{blue}{2.23607} & 7.54983 & 10.04988 \\ \hline
+        Bod 11 & 9 & 4.3589 & \textcolor{blue}{3} \\ \hline
+        Bod 12 & 11.44552 & \textcolor{blue}{5.74456} & 6.40312 \\
+    \hline
+    \end{tabular}
+    \label{tab:iterace1}
+\end{table}
+\newline
+\centering{Nejmenší vzdálenost je označena modrou barvou}
+
+\flushleft
+Shluk 1: Bod 5: [1; 2; -4], Bod 8: [-3; 0; 0], Bod 9: [-2; 2; -4], Bod 10: [-2; 4; 3] \newline
+Shluk 2: Bod 1: [0; -1; 2], Bod 2: [-3; -1; -3], Bod 3: [1; -3; 2], Bod 4: [-2; -2; 2], \newline
+\null\quad\quad\qquad Bod 6: [0; -4; 3], Bod 7: [1; 0; -3],  Bod 12: [2; -5; -4] \newline
+Shluk 3: Bod 11: [3; -2; 4]
+
+\vspace{0.5cm}
+Ukázka výpočtu nového středového bodu: \[\frac{1 - 3 - 2 - 2}{4} = -1.5 \quad \frac{2+0+2+4}{4} = 2 \quad \frac{-4+0-4+3}{4} = -1.25 \qquad [-1.5, 2.0, -1.25]\]
+
+\newpage
+Nové středy: \newline
+
+\vspace{0.05cm}
+
+Střed 1: [-1.5, 2.0, -1.25] \newline
+Střed 2: [-0.14285714285714285, -2.2857142857142856, -0.7142857142857143] \newline
+Střed 3: [3.0, -2.0, 4.0] \newline
+
+\vspace{0.5cm}
+
+\textbf{Iterace 2:} \newline
+\begin{table}[!ht]
+    \renewcommand{\arraystretch}{1.3}
+    \centering
+    \setlength{\tabcolsep}{20pt}
+    \begin{tabular}{|c|c|c|c|}
+    
+    \hline
+        & Střed 1 & Střed 2 & Střed 3 \\ \hline
+        Bod 1 & 3.43693 & \textcolor{blue}{1.82388} & 6.78233  \\ \hline
+        Bod 2 & \textcolor{blue}{3.78319} & 3.87825 & 9.27362 \\ \hline
+        Bod 3 & 6.46626 & 3.03046 & \textcolor{blue}{3} \\ \hline
+        Bod 4 & 5.17808 & \textcolor{blue}{3.30121} & 5.38516 \\ \hline
+        Bod 5 & \textcolor{blue}{3.71652} & 5.51991 & 9.16515\\ \hline
+        Bod 6 & 7.50417 & 4.09330 & \textcolor{blue}{3.74166} \\ \hline
+        Bod 7 & 3.64863 & \textcolor{blue}{3.42857} & 7.54983 \\ \hline
+        Bod 8 & \textcolor{blue}{2.79508} & 3.728 & 7.48331\\ \hline
+        Bod 9 & \textcolor{blue}{2.79508} & 5.71071 & 10.24695 \\ \hline
+        Bod 10 & \textcolor{blue}{4.72361} & 7.5336 & 7.87401 \\ \hline
+        Bod 11 & 7.98827 & 5.67307 & \textcolor{blue}{0} \\ \hline
+        Bod 12 & 8.29533 & \textcolor{blue}{4.77023} & 8.60232\\
+    \hline
+    \end{tabular}
+    \label{tab:iterace1}
+\end{table}
+\newline
+Shluk 1: Bod 2: [-3; -1; -3], Bod 5: [1; 2; -4], Bod 8: [-3; 0; 0], Bod 9: [-2; 2; -4], \newline 
+\null\quad\quad\qquad   Bod 10: [-2; 4; 3] \newline
+Shluk 2: Bod 1: [0; -1; 2],  Bod 4: [-2; -2; 2], Bod 7: [1; 0; -3], Bod 12: [2; -5; -4] \newline
+Shluk 3: Bod 3: [1; -3; 2], Bod 6: [0; -4; 3], Bod 11: [3; -2; 4]
+
+\vspace{0.5cm}
+
+Nové středy: \newline
+Střed 1: [-1.8, 1.4, -1.6] \newline
+Střed 2: [0.25, -2.0, -1.75] \newline
+Střed 3: [1.33333, -3.0, 3.0] \newline
+
+\newpage
+% Tady jsem skoncil
+\textbf{Iterace 3:} \newline
+\begin{table}[!ht]
+    \renewcommand{\arraystretch}{1.3}
+    \centering
+    \setlength{\tabcolsep}{20pt}
+    \begin{tabular}{|c|c|c|c|}
+    
+    \hline
+        & Střed 1 & Střed 2 & Střed 3 \\ \hline
+        Bod 1 & 3.02655 & \textcolor{blue}{1.06066} & 5.54777 \\ \hline
+        Bod 2 & \textcolor{blue}{3.02655} & 3.62284 & 7.66667  \\ \hline
+        Bod 3 & 6.33719 & 3.95285 & \textcolor{blue}{1.05409}  \\ \hline 
+        Bod 4 & 4.9558 & 4.37321 & \textcolor{blue}{3.62093}  \\ \hline 
+        Bod 5 & \textcolor{blue}{3.73631} & 4.65027 & 8.60878 \\ \hline 
+        Bod 6 & 7.31847 &  5.15994 & \textcolor{blue}{1.66667} \\ \hline
+        Bod 7 & 3.42929 & \textcolor{blue}{2.47487} & 6.71648  \\ \hline
+        Bod 8 & \textcolor{blue}{2.44131} & 4.19821 & 6.06447 \\ \hline 
+        Bod 9 & \textcolor{blue}{2.48193} & 5.11126 & 9.22557  \\ \hline
+        Bod 10 & \textcolor{blue}{5.28772} & 7.97653 & 7.75314  \\ \hline
+        Bod 11 & 8.12158 & 6.37377 & \textcolor{blue}{2.18581}  \\ \hline
+        Bod 12 & 7.82049 & \textcolor{blue}{4.13824} & 7.31057 \\
+    \hline
+    \end{tabular}
+    \label{tab:iterace1}
+\end{table}
+\newline
+Shluk 1: Bod 2: [-3; -1; -3], Bod 5: [1; 2; -4], Bod 8: [-3; 0; 0], Bod 9: [-2; 2; -4], \newline 
+\null\quad\quad\qquad   Bod 10: [-2; 4; 3] \newline
+Shluk 2: Bod 1: [0; -1; 2], Bod 7: [1; 0; -3], Bod 12: [2; -5; -4] \newline
+Shluk 3: Bod 3: [1; -3; 2], Bod 4: [-2; -2; 2], Bod 6: [0; -4; 3], Bod 11: [3; -2; 4]
+
+\vspace{0.5cm}
+
+Nové středy: \newline
+Střed 1: [-1.8, 1.4, -1.6] \newline
+Střed 2: [1.0, -2.0, -3.0] \newline
+Střed 3: [0.5, -2.75, 2.75] \newline
+
+\newpage
+
+\textbf{Iterace 4:} \newline
+\begin{table}[!ht]
+    \renewcommand{\arraystretch}{1.3}
+    \centering
+    \setlength{\tabcolsep}{20pt}
+    \begin{tabular}{|c|c|c|c|}
+    
+    \hline
+        & Střed 1 & Střed 2 & Střed 3 \\ \hline
+        Bod 1 & 3.02655 & \textcolor{blue}{1.73205} & 5.08675 \\ \hline
+        Bod 2 & \textcolor{blue}{3.02655} & 4.12311 & 6.95521  \\ \hline
+        Bod 3 & 6.33719 & 5.09902 & \textcolor{blue}{0.93541}  \\ \hline
+        Bod 4 & 4.9558 & 5.83095 & \textcolor{blue}{2.7157}  \\ \hline
+        Bod 5 & \textcolor{blue}{3.73631} & 4.12311 & 8.26892 \\ \hline
+        Bod 6 & 7.31847 & 6.40312 & \textcolor{blue}{1.36931} \\ \hline
+        Bod 7 & 3.42929 & \textcolor{blue}{2} & 6.39336  \\ \hline
+        Bod 8 & \textcolor{blue}{2.44131} & 5.38516 & 5.23211 \\ \hline
+        Bod 9 & \textcolor{blue}{2.48193} & 5.09902 & 8.62409 \\ \hline
+        Bod 10 & \textcolor{blue}{5.28772} & 9 & 7.20243 \\ \hline
+        Bod 11 & 8.12158 & 7.28011 & \textcolor{blue}{2.89396}  \\ \hline
+        Bod 12 & 7.82049 & \textcolor{blue}{3.31662} & 7.27152 \\
+    \hline
+    \end{tabular}
+    \label{tab:iterace1}
+\end{table}
+\newline
+Shluk 1: Bod 2: [-3; -1; -3], Bod 5: [1; 2; -4], Bod 8: [-3; 0; 0], Bod 9: [-2; 2; -4], \newline 
+\null\quad\quad\qquad   Bod 10: [-2; 4; 3] \newline
+Shluk 2: Bod 1: [0; -1; 2], Bod 7: [1; 0; -3], Bod 12: [2; -5; -4] \newline
+Shluk 3: Bod 3: [1; -3; 2], Bod 4: [-2; -2; 2], Bod 6: [0; -4; 3], Bod 11: [3; -2; 4]
+
+\vspace{0.5cm}
+
+Shluky jsou stejné, to znamená, že i středy jsou stejné. Ukončíme tedy algoritmus.
+
+\vspace{0.5cm}
+
+\textbf{Konečný výsledek:}
+
+\vspace{0.25cm}
+
+Shluk 1: Bod 2: [-3; -1; -3], Bod 5: [1; 2; -4], Bod 8: [-3; 0; 0], Bod 9: [-2; 2; -4], \newline 
+\null\quad\quad\qquad   Bod 10: [-2; 4; 3] \newline
+Shluk 2: Bod 1: [0; -1; 2], Bod 7: [1; 0; -3], Bod 12: [2; -5; -4] \newline
+Shluk 3: Bod 3: [1; -3; 2], Bod 4: [-2; -2; 2], Bod 6: [0; -4; 3], Bod 11: [3; -2; 4]
+
+\vspace{0.2cm}
+
+Střed 1: [-1.8, 1.4, -1.6] \newline
+Střed 2: [1.0, -2.0, -3.0] \newline
+Střed 3: [0.5, -2.75, 2.75] \newline
+
+
+
+
+\end{document}

@@ -1,0 +1,103 @@
+\section{Příklad 2}
+% Jako parametr zadejte skupinu (A-H)
+\druhyZadani{E}
+
+\subsection{Řešení}
+\begin{large}
+\flushleft
+Obvod pro vypocitani $R_i$:
+\end{large}
+
+\vspace{0.25cm}
+\begin{circuitikz}
+\draw
+(0,0) to[R=$R_{1}$] (2,0)
+(2,0) to[R=$R_{2}$] (4,0)
+(4,0) to[R=$R_3$, *-*] (4,-4)
+(4,0) to[R=$R_4$, -*] (7,0)
+(7,0) to[short, -o] (8.5,0)
+(7,0) to[R=$R_5$, *-*] (7,-4)
+(0,-4) to[short, -o] (8.5,-4)
+(0,0) to[short] (0,-4)
+; \end{circuitikz}
+
+\begin{large}
+\vspace{0.5cm} \flushleft
+Nejdříve sečteme rezistory $R_1$ a $R_2$.
+\end{large}
+
+\vspace{0.25cm}
+$R_{12} = R_1 + R_2 = 150 + 335 = 485\: \Omega$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Poté vypočítáme paralelní rezistory $R_{12}$ a $R_3$, které pak sečteme se seriovým rezistorem $R_4$.
+\end{large}
+
+\vspace{0.25cm}
+$R_{1234} = \frac{R_{12} \cdot R_{3}}{R_{12} + R_{3}} + R_4 = \frac{485 \cdot 625}{485 + 625} + 245 = 518.0856\: \Omega$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Zbývají pouze 2 paralelní rezistory, které když zjednodušíme dostaneme $R_i$.
+\end{large}
+
+\vspace{0.25cm}
+$R_i = \frac{R_{1234} \cdot R_5}{R_{1234} + R_5} = \frac{310851.36}{1118.0856} = 278.0211\: \Omega$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Obvod pro $U_i$:
+\end{large}
+
+\vspace{0.25cm}
+\begin{circuitikz}
+\draw
+(0,0) to[R=$R_{1}$] (2,0)
+(2,0) to[R=$R_{2}$] (4,0)
+(4,0) to[R=$R_3$, *-*] (4,-4)
+(4,0) to[R=$R_4$, -*] (7,0)
+(7,0) to[R=$R_5$, -*] (7,-4)
+(0,-4) to[short] (7,-4)
+(7,0) to[short, -o] (9,0)
+(7,-4) to[short, -o] (9,-4)
+(9, 0) to[open, v=$U_i$] (9, -4)
+(0,0) to[dcvsource, v=$U$] (0,-4)
+; \end{circuitikz}
+
+\begin{large}
+\vspace{0.5cm} \flushleft
+Vypočítáme si napětí nad rezistorem $R_5$, protože $U_5$ = $U_i$. Použijeme následující vzorec:
+\end{large}
+
+\vspace{0.5cm}
+$U_5 = U \cdot \frac{R_3 \cdot R_5}{(R_1 + R_2) \cdot (R_3 + R_4 + R_5) + R_3 \cdot (R_4 + R_5)} = 250 \cdot \frac{375000}{485 \cdot 1470 + 528125} = 75.5394\: \si{\volt}$
+
+\vspace{1cm}
+\begin{circuitikz}
+\draw
+(0,0) to[R=$R_i$] (3,0)
+(3,0) to[R=$R_6$, *-*] (3,-3)
+(0,-3) to[short] (3,-3)
+(0,0) to[dcvsource, v=$U_i$] (0,-3)
+; \end{circuitikz}
+
+\begin{large}
+\vspace{0.5cm} \flushleft
+Jakmile známe $U_i$, můžeme dopočítat $I_{R6}$ pomocí Théveninovy věty.
+\end{large}
+
+\vspace{0.5cm}
+$I_{R6} = \frac{U_i}{R_i + R_6} = \frac{75.5394}{428.0211} = 0.1765\: \si{\ampere}$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Jakmile známe $I_{R6}$, snadno dopočítáme nápětí.
+\end{large}
+
+\vspace{0.5cm}
+$U_{R6} = I_{R6} \cdot R_6 = 0.1765 \cdot 150 = 26.475\: \si{\volt}$
+
+\subsection{Výsledek}
+
+$U_{R6} = 26.48\: \si{\volt}, I_{R6} = 0.18\: \si{\ampere}$

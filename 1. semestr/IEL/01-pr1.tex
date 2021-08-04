@@ -1,0 +1,141 @@
+\section{Příklad 1}
+% Jako parametr zadejte skupinu (A-H)
+\prvniZadani{A}
+
+\subsection{Řešení}
+
+\begin{circuitikz}
+\draw
+(0,0) to[R=$R_{A}$, -*] (3,0)
+(3,0) to[short] (4,-1)
+(4,1) to[R=$R_B$] (6,1)
+(3,0) to[short] (4,1)
+(4,-1) to[R=$R_{C}$] (6,-1)
+(6,-1) to[R=$R_{6}$] (9,-1)
+(6,1) to[R=$R_{45}$] (9,1)
+(9,-1) to[short, -*] (9,0)
+(9,1) to[short, -*] (9,0)
+(9,0) to[short] (10,0)
+(10,0) to[short] (10,-3)
+(5,-3) to[short] (10,-3)
+(0,-3) to[R=$R_{78}$] (8,-3)
+(0,0) to[dcvsource, v=$U$] (0,-3)
+
+; \end{circuitikz}
+\begin{large}
+
+\vspace{0.5cm} \flushleft
+Převedeme rezistory $R_1$, $R_2$, $R_3$ na trojúhelník. Nahradíme je rezistory $R_A$, $R_B$ a $R_C$. Použijeme vzorce na výpočty nahrazených rezistorů:
+\end{large}
+
+\vspace{0.25cm}
+$R_{A} = \frac{R_1\cdot R_2}{R_1 + R_2 + R_3} = \frac{350 \cdot 650}{350 + 650 + 410} = \frac{227 500}{1410} = 161.3475\: \Omega$
+
+\vspace{0.25cm}
+$R_{B} = \frac{R_1\cdot R_3}{R_1 + R_2 + R_3} = \frac{350 \cdot 410}{350 + 650 + 410} = \frac{143500}{1410} = 101.7730\: \Omega$
+
+\vspace{0.25cm}
+$R_{C} = \frac{R_2\cdot R_3}{R_1 + R_2 + R_3} = \frac{650 \cdot 410}{350 + 650 + 410} = \frac{266500}{1410} = 189.0071\: \Omega$
+\begin{large}
+
+\vspace{1cm} \flushleft
+Dále sečteme rezistory $R_4$ s $R_5$ a $R_7$ s $R_8$.
+\end{large}
+
+\vspace{0.25cm}
+$R_{45} = R_{4} + R_{5} = 130 + 360 = 490\: \Omega$
+
+\vspace{0.25cm}
+$R_{78} = \frac{R_{7} \cdot R_{8}}{R_{7} + R_{8}} = \frac{310 \cdot 190}{310 + 190} = \frac{58900}{500} = 117.8\: \Omega$
+
+\begin{circuitikz} 
+\draw
+(0,0) to[R=$R_{A}$, -*] (3,0)
+(3,0) to[short] (3.5,-1)
+(3.5,1) to[R=$R_{B45}$] (6,1)
+(3,0) to[short] (3.5,1)
+(3.5,-1) to[R=$R_{C6}$] (6,-1)
+(6,-1) to[short, -*] (6,0)
+(6,1) to[short, -*] (6,0)
+(6,0) to[short] (7,0)
+(7,0) to[short] (7,-3)
+(0,-3) to[R=$R_{78}$] (7,-3)
+(0,0) to[dcvsource, v=$U$] (0,-3)
+
+; \end{circuitikz}
+
+\vspace{0.5cm}
+\begin{large} \flushleft
+Sečteme sériové rezistory $R_{B}$ s $R_{45}$ a $R_{C}$ s $R_6$.
+\end{large}
+
+\vspace{0.25cm}
+$R_{B45} = R_B + R_{45} = 101.7730 + 490 = 591.7730\: \Omega$
+
+\vspace{0.25cm}
+$R_{C6} = R_C + R_6 = 189.0071 + 750 = 939.0071\: \Omega$
+
+\vspace{1cm}
+\begin{circuitikz} 
+\draw
+(0,0) to[R=$R_{A}$] (2,0)
+(2,0) to[R=$R_{BC456}$] (4,0)
+(4,0) to[short] (4,-2)
+(0,-2) to[R=$R_{78}$] (4,-2)
+(0,0) to[dcvsource, v=$U$] (0,-2)
+
+; \end{circuitikz}
+
+\vspace{0.5cm}
+\begin{large} \flushleft
+Sečteme parelelní rezistory $R_{B45}$ a $R_{C6}$.
+\end{large}
+
+\vspace{0.25cm}
+$R_{BC456} = \frac{R_{B45} \cdot R_{C6}}{R_{B45} + R_{C6}} = \frac{591.7730 \cdot 939.0071}{591.7730 + 939.0071} = \frac{555679.0486}{1530.7801} =  363.0038\: \Omega$
+
+\vspace{1cm}
+\begin{circuitikz} 
+\draw
+(0,0) to[R=$R_{EKV}$, i=$I$] (3,0)
+(3,0) to[short] (3,-2)
+(0,-2) to[short] (3,-2)
+(0,0) to[dcvsource, v=$U$] (0,-2)
+; \end{circuitikz}
+
+\vspace{0.5cm}
+\begin{large} \flushleft
+Sečteme zbylé rezistory.
+\end{large}
+
+\vspace{0.25cm}
+$R_{EKV} = R_{A} + R_{BC456} + R_{78} = 161.3475 + 363.0038 + 117.8 = 642.1513\: \Omega$
+
+\vspace{1cm}
+\begin{large} \flushleft
+Vypočítáme proud procházející obvodem.
+\end{large}
+
+\vspace{0.25cm}
+$I = \frac{U}{R_{EKV}} = \frac{200}{642.1513} = 0.3115\: \si{\ampere}$
+
+\vspace{1cm}
+\begin{large} \flushleft
+Postupně budeme zpátky skládat obvod a vypočítávat proud a napětí na součástkách, než se dostaneme k požadovanému rezistoru. 
+\end{large}
+
+\vspace{0.25cm}
+$U_{BC456} = I \cdot R_{BC456} = 0.3115 \cdot 363.0038 = 113.0757\: \si{\volt}$
+
+\vspace{0.25cm}
+$I_{B45} = \frac{U_{BC456}}{R_{B45}} = \frac{113.0757}{591.7730} = 0.1911\: \si{\ampere}$
+
+\vspace{0.25cm}
+$I_{R5} = I_{B45} = 0.1911\: \si{\ampere}$
+
+\vspace{0.25cm}
+$U_{R5} = I_{R5} \cdot R_{5} = 0.1911 \cdot 360 = 68.796\: \si{\volt}$
+
+\vspace{1cm}
+\subsection{Výsledek}
+$I_{R5} = 0.19\: \si{\ampere}$, $U_{R5} = 68.80\: \si{\volt}$

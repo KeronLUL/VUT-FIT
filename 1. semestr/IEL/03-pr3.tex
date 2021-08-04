@@ -1,0 +1,182 @@
+\section{Příklad 3}
+% Jako parametr zadejte skupinu (A-H)
+\tretiZadani{H}
+
+\subsection{Řešení}
+
+\begin{circuitikz} \draw
+(2,4) to[R,l=$R_1$, v=$U_A$] (2,0)--(0,0)
+(5.5,4) to[R, l=$R_4$, v=$U_{R4}$, i=$I_{R4}$] (5.5,0) to[R, l=$R_3$, v=$U_C$ ,*-*] (2,0)
+(0,0) to[I, i=$I_1$] (0,4)
+(0,4) to[short] (2,4)
+(2,4) to[R=$R_2$, *-*] (5.5,4)
+(5.5,4) to[R=$R_5$, *-] (8,4)
+(8,4) to[dcvsource, v=$U$] (8,0)
+(8,0) to[short] (5.5,0)
+(2,0) to[short] (2,-1.5)
+(2,-1.5) to[I, i=$I_2$] (5.5,-1.5)
+(5.5,0) to[short] (5.5,-1.5)
+(5.5,4) to[open, v=$U_B$] (2,0)
+(1.75,-0.25) node{R}
+(5.74,-0.25) node{C}
+(1.75,4.25) node{A}
+(5.75, 4.25) node{B}
+;
+\end{circuitikz}
+
+
+\begin{large}
+Napišeme rovnice podle 1. Kirchhoffova zákona.
+\end{large}
+
+\vspace{0.5cm}
+$A: I_1 + I_{R2} - I_{R1} = 0$
+
+\vspace{0.25cm}
+$B: I_{R5} - I_{R2} - I_{R4} = 0$
+
+\vspace{0.25cm}
+$C: I_2 + I_{R4} - I_{R5} - I_{R3} = 0$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Dále si napíšeme rovnice pro každý proud, abychom mohli dosadit do soustavy rovnic a vypočítat neznámé.
+\end{large}
+
+\vspace{0.5cm}
+$I_{R1} = \frac{U_A}{R_1}$
+
+\vspace{0.25cm}
+$I_{R2} = \frac{U_B - U_A}{R_2}$
+
+\vspace{0.25cm}
+$I_{R3} = \frac{U_C}{R_3}$
+
+\vspace{0.25cm}
+$I_{R4} = \frac{U_B - U_C}{R_4}$
+
+\vspace{0.25cm}
+$I_{R5} = \frac{U + U_C - U_B}{R_5}$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Dosadíme do soustavy Kirchhoffova zákonu.
+\end{large}
+
+\vspace{0.5cm}
+$0.95 + \frac{U_B + U_A}{39} - \frac{U_A}{47} = 0$
+
+\vspace{0.25cm}
+$\frac{130 + U_C - U_B}{25} - \frac{U_B - U_A}{39} - \frac{U_B - U_C}{28} = 0$
+
+\vspace{0.25cm}
+$0.50 + \frac{U_B - U_C}{28} - \frac{130 + U_C - U_B}{25} - \frac{U_C}{58} = 0$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Upravíme soustavu.
+\end{large}
+
+\vspace{0.5cm}
+$
+\begin{array}{ccccccc}
+    -86U_A & + & 47U_B & & & = & -1741.35\\
+    700U_A & - & 2767U_B & + & 2067U_C & = & -141960\\
+    & & 3074U_B & - & 3774U_C & = & 170520\\
+\end{array}
+$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Přepíšeme soustavu do matice a vypočítáme.
+\end{large}
+
+\vspace{0.5cm}
+$
+\left(
+\begin{array}{ccc|c}
+-86 & 47 &0 & -1741.35\\
+700 & -2767 & 2067 & -141960\\
+0 & 3074 & -3774 & 170520\\
+\end{array}
+\right)
+$
+\: \: $\sim$ \: \:
+$
+\left(
+\begin{array}{ccc|c}
+1 & -0.5465 & 0 & 20.2483\\
+0 & -2384.4419 & 2067 & -156133.7791\\
+0 & 3074 & -3774 & 170520\\
+\end{array}
+\right)
+$
+\: \: $\sim$ \: \:
+
+\vspace{0.5cm}
+$
+\left(
+\begin{array}{ccc|c}
+1 & 0 & -0.4736 & 56.034\\
+0 & 1 & -0.8669 & 65.4802\\
+0 & 0 & -1109.2431 & -30766.1982\\
+\end{array}
+\right)
+$
+\: \: $\sim$ \: \:
+$
+\left(
+\begin{array}{ccc|c}
+1 & 0 & 0 & 69.1741\\
+0 & 1 & 0 & 89.5239\\
+0 & 0 & 1 & 27.7362\\
+\end{array}
+\right)
+$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Z matice dostaneme hodnotu $U_C$ a díy ní dopočítáme $U_A$ a $U_B$. Vyjde nám následující:
+\end{large}
+
+\vspace{0.5cm}
+$U_A = 69.1741\: \si{\volt}$
+
+\vspace{0.25cm}
+$U_B = 89.5239\: \si{\volt}$
+
+\vspace{0.25cm}
+$U_C = 27.7362\: \si{\volt}$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Dosadíme do vzorce pro $I_{R4}$ a vypočítáme.
+\end{large}
+
+\vspace{0.5cm}
+$I_{R4} = \frac{U_B - U_C}{R_4} = \frac{61.7877}{28} = 2.2067\: \si{\ampere}$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Provedeme kontrolu dosazením do rovnice.
+\end{large}
+
+\vspace{0.5cm}
+$I_{R5} - I_{R2} - I_{R4} = 0$
+
+\vspace{0.25cm}
+$2.7285 - 2.2067 - 0.5218 = 0$
+
+\vspace{0.25cm}
+$0 = 0$
+
+\begin{large}
+\vspace{1cm}
+Zkouška nám vyšla, proto můžeme dopočítat $U_{R4}$ pomocí Ohmova zákonu.
+\end{large}
+
+\vspace{0.5cm}
+$U_{R4} = I_{R4} \cdot R_4 = 2.2067 \cdot 28 = 61.7876\: \si{\volt}$
+
+\subsection{Výsledek}
+$I_{R4} = 2.21\: \si{\ampere}, U_{R4} = 61.79\: \si{\volt}$

@@ -1,0 +1,134 @@
+\section{Příklad 5}
+% Jako parametr zadejte skupinu (A-H)
+\patyZadani{E}
+
+\subsection{Řešení}
+\begin{large}
+\flushleft
+Sestavíme obyčejnou diferenciální rovnici 1. řádu.
+\end{large}
+
+\begin{enumerate}
+    \item i = U/R = $i_c$ = $i_R$
+    \item $(U_R + u_C) - U = 0$
+    \item $u'_C = \frac{1}{C} \cdot i_C$
+\end{enumerate}
+
+\begin{enumerate}
+    \item[a)] $u'_C = \frac{1}{C} \cdot i_C$
+    
+    \vspace{0.25cm}
+    $u'_C = \frac{1}{C} \cdot \frac{U_R}{R}$
+    
+    \vspace{0.25cm}
+    $u'_C = \frac{U_R}{R \cdot C}$
+    
+    \vspace{0.25cm}
+    \item[b)] $u'_C = \frac{U_R}{R \cdot C}$
+    
+    \vspace{0.25cm}
+    $u'_C = \frac{U - u_C}{R \cdot C}$
+    
+    \vspace{0.25cm}
+    $u'_C + \frac{u_C}{R_C} = \frac{U}{R \cdot C}$
+\end{enumerate}
+
+\begin{large}
+\vspace{1cm} \flushleft
+Očekáváné řešení:
+\end{large}
+
+\vspace{0.5cm}
+$u_C(t) = K(t) \cdot e^{\lambda \cdot t}$
+
+\vspace{0.25cm}
+$\lambda = -\frac{1}{R \cdot C}$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Derivujeme rovnici.
+\end{large}
+
+\vspace{0.5cm}
+$u_C = K(t) \cdot e^-\frac{t}{R \cdot C}$
+
+\vspace{0.25cm}
+$u'_C = K'(t) \cdot e^{-\frac{t}{R \cdot C}} + K(t) \cdot e^{-\frac{t}{R \cdot C}} \cdot (-\frac{1}{R \cdot C})$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Dosadíme do předešlého vzorce $u'_C + \frac{u_c}{R \cdot C} = \frac{U}{R \cdot C}$.
+\end{large}
+
+\vspace{0.5cm}
+$K'(t) \cdot e^{-\frac{t}{R \cdot C}} + K(t) \cdot e^{-\frac{t}{R \cdot C}} \cdot (-\frac{1}{R \cdot C}) + (\frac{1}{R \cdot C}) \cdot K(t) \cdot e^{-\frac{t}{R \cdot C}} = \frac{U}{R \cdot C}$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Upravíme rovnici a dostaneme následující vzorec:
+\end{large}
+
+\vspace{0.5cm}
+$K'(t) = \frac{U \cdot e^{-\frac{t}{R \cdot C}}}{R \cdot C}$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Integrujeme vzorec.
+\end{large}
+
+\vspace{0.5cm}
+$K'(t) = \frac{U}{R \cdot C} \cdot e^{\frac{t}{R \cdot C}}$
+
+\vspace{0.25cm}
+$K(t) = \frac{U}{R \cdot C} \cdot \int e^{\frac{t}{R \cdot C}} \cdot dx$
+
+\vspace{0.25cm}
+$K(t) = \frac{U}{R \cdot C} \cdot \frac{R \cdot C}{1} \cdot e^{\frac{t}{R \cdot C}} + k$
+
+\vspace{0.25cm}
+$K(t) = U \cdot e^{\frac{t}{R \cdot C}} + k$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Dosadíme do počáteční podmínky, abychom dostali konstantu k.
+\end{large}
+
+\vspace{0.5cm}
+$u_C(0) = U + k \cdot e^{-\frac{t}{R \cdot C}}$
+
+\vspace{0.25cm}
+$u_C(0) = U + k$
+
+\vspace{0.25cm}
+$k = u_C(0) - U$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Dosadíme do očekáváného řešení.
+\end{large}
+
+\vspace{0.5cm}
+$u_C(t) = (U \cdot e^{\frac{t}{R \cdot C}} + k) \cdot e^{-\frac{t}{R \cdot C}}$
+
+\vspace{0.25cm}
+$u_C(t) = U + k \cdot e^{-\frac{t}{R \cdot C}}$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Pro kontrolu dosadíme hodnotz pro t = 0.
+\end{large}
+
+\vspace{0.5cm}
+$u_c = U + (u_c(0) - U)$
+
+\vspace{0.25cm}
+$11 = 11$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Zkouška nám vyšla, tím pádem je naše řešení správné.
+\end{large}
+
+\subsection{Výsledek}
+
+$u_C(t) = U + k \cdot e^{-\frac{t}{R \cdot C}}$

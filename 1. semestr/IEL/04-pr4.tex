@@ -1,0 +1,188 @@
+\section{Příklad 4}
+% Jako parametr zadejte skupinu (A-H)
+\ctvrtyZadani{A}
+
+\subsection{Řešení}
+
+\begin{circuitikz}
+\draw
+(0,0) to[vsourcesin, v=$U_{1}$] (3,0)
+(3,0) to[cute inductor=$L_{2}$] (5,0)
+(5,0) to[short] (6,0)
+(6,0) to[short, -*] (6,-2)
+(0,0) to[short, -*] (0,-2)
+(0,-2) to[short, -*] (3,-2)
+(3,-2) to[C=$C_2$] (6,-2)
+(3,-2) to[vsourcesin, v=$U_{1}$] (3,-4)
+(3,-4) to[cute inductor=$L_{2}$] (6,-4)
+(0,-2) to[R=$R_1$] (0,-4)
+(0,-4) to[C=$C_1$] (3,-4)
+(6,-2) to[R=$R_2$] (6,-4)
+
+
+; 
+\draw [thick, <-] (2,-2.75) arc (0:300:0.3);
+\draw (1.15,-2.75) node[]{$I_B$};
+\draw [thick, <-] (3,-1) arc (0:300:0.3);
+\draw (2.15,-1) node[]{$I_A$};
+\draw [thick, <-] (5.2,-2.75) arc (0:300:0.3);
+\draw (4.3,-2.75) node[]{$I_C$};
+\end{circuitikz}
+
+\begin{large}
+\flushleft
+Vypočítáme si $\omega$.
+\end{large}
+
+\vspace{0.5cm}
+$\omega = 2\pi \cdot f = 2\pi \cdot 70 = 439.8230$
+
+\begin{large}
+\vspace{1cm}\flushleft
+Vypočítáme si impedanci cívek a kondenzádorů.
+\end{large}
+
+\vspace{0.5cm}
+$Z_{C1} = -\frac{j}{\omega \cdot C_1} = -\frac{j}{439.8230 \cdot 2 \cdot 10^{-4}} = -\frac{j}{0.0880} = -j \cdot 11.3636\: \Omega$
+
+\vspace{0.25cm}
+$Z_{C2} = -\frac{j}{\omega \cdot C_2} = -\frac{j}{439.8230 \cdot 1.05 \cdot 10^{-4}} = -\frac{j}{0.0462} = -j \cdot 21.6450\: \Omega$
+
+\vspace{0.25cm}
+$Z_{L1} = j\omega L_1 = j \cdot 52.7788\: \Omega$
+
+\vspace{0.25cm}
+$Z_{L2} = j\omega L_2 = j \cdot 43.9823\: \Omega$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Napišeme si rovnice pro smyčkové proudy.
+\end{large}
+
+\vspace{0.5cm}
+A: $Z_{L1} \cdot I_A + Z_{C2} \cdot I_A - Z_{C2} \cdot I_C + u_1 = 0$
+
+\vspace{0.25cm}
+B: $Z_{C1} \cdot I_B + R_1 \cdot I_B + u_2 = 0$
+
+\vspace{0.25cm}
+C: $R_2 \cdot I_C + Z_{L2} \cdot I_C + Z_{c2} \cdot I_C - Z_{C2} \cdot I_A - u_2 = 0$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Přepíšu si rovnice na soustavu rovnic.
+\end{large}
+
+\vspace{0.5cm}
+$
+\begin{array}{ccccccc}
+    I_A \cdot (Z_{L1} + Z_{C2}) &  &  & - & I_C \cdot Z_{C2} & = & -u_1\\
+    &  & I_B \cdot (Z_{C1} + R_1) &  &  & = & -u_2\\
+    -I_A \cdot Z_{C2} & & & + & I_C \cdot (R_2 + Z_{L2} + Z_{C2}) & = & u_2\\
+\end{array}
+$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Přepíšeme soustavu do matice, dosadíme a vypočítáme.
+\end{large}
+
+\vspace{0.5cm}
+$
+\left(
+\begin{array}{ccc|c}
+    I_A \cdot (Z_{L1} + Z_{C2}) & 0 & -I_C \cdot Z_{C2} & -u_1\\
+    0 & I_B \cdot (Z_{C1} + R_1) & 0 & -u_2\\
+    -I_A \cdot Z_{C2} & 0 & I_C \cdot (R_2 + Z_{L2} + Z_{C2}) & u_2\\
+\end{array}
+\right)
+$
+
+\vspace{0.5cm}
+$
+\left(
+\begin{array}{ccc|c}
+    0 + 31.1338j & 0 & 0 + 21.6450j & -35\\
+    0 & 12 - 11.3636j & 0 & -55\\
+    0 + 21.6450j & 0 & 14 + 22.3373j & 55\\
+\end{array}
+\right)
+\; \sim
+$
+
+\vspace{0.5cm}
+$
+\left(
+\begin{array}{ccc|c}
+    1 & 0 & 0.6952j & 1.1242\\
+    0 & 12 - 11.3636j & 0 & -55\\
+    0 & 0 & 14 + 7.2892j & 79.3329\\
+\end{array}
+\right)
+\; \sim
+$
+
+\vspace{0.5cm}
+$
+\left(
+\begin{array}{ccc|c}
+    1 & 0 & 0.6952j & 1.1242\\
+    0 & 1 & 0 & -2.4164 - 2.2883j\\
+    0 & 0 & 14 + 7.2892j & 79.3329\\
+\end{array}
+\right)
+$
+\: \: $\sim$ \: \:
+$
+\left(
+\begin{array}{ccc|c}
+    1 & 0 & 0 & -3.0994 + 2.7379j\\
+    0 & 1 & 0 & -2.4164 - 2.2883j\\
+    0 & 0 & 1 & 4.4581 - 2.3211j\\
+\end{array}
+\right)
+$
+
+\vspace{0.5cm}
+$I_A = -3.0994 + 2.7379j$
+
+\vspace{0.25cm}
+$I_B = -2.4164 - 2.2883j$
+
+\vspace{0.25cm}
+$I_C = 4.4581 - 2.3211j$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Dostaneme smyčkové proudy. Vypočítáme pomocí nich $I_{C2}$.
+\end{large}
+
+\vspace{0.5cm}
+
+$I_{C2} = I_C - I_A = (4.4581 - 2.3211j) - (-3.0994 + 2.7379j) = 7.5575 - 5.059j$
+
+\vspace{0.25cm}
+$|I_{C2}| = \sqrt{A^2 + B^2} = \sqrt{(7.5575)^2 + (-5.059)^2} = 9.0945\: \si{\ampere}$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Pomocí $I_{C2}$ a impedance $Z_{C2}$ vypočítáme $U_{c2}$.
+\end{large}
+
+\vspace{0.5cm}
+$U_{c2} = I_{C2} \cdot Z_{C2} = (7.5575 - 5.059j) \cdot (-21.6450j) = -109.5021 - 163.5821j$
+
+\vspace{0.25cm}
+$|U_{C2}| = \sqrt{(A)^2 + (B)^2} = \sqrt{(-109.5021)^2 + (-163.5821)^2} = 196.8497\: \si{\volt}$
+
+\begin{large}
+\vspace{1cm} \flushleft
+Zbývá vypočítat fázový posun pomocí vzorce $\varphi = \arctan (\frac{B}{A})$, kde A je reálná část $I_{C2}$ a B je imaginární část $I_{C2}$. Nacházíme se ve 4. kvadrantu proto přičteme $\pi$.
+\end{large}
+
+\vspace{0.5cm}
+$\varphi = \arctan (\frac{B}{A}) + \pi = \arctan (\frac{-5.059}{7.5575}) + \pi = 2.5517\: \si{\radian}$
+
+\subsection{Výsledek}
+
+$|U_{C2}| = 196.85\: \si{\volt}, \varphi = 2.55\: \si{\radian}$
